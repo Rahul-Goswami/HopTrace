@@ -50,6 +50,9 @@ class Endpoint:
                 self.epg = self.epg.split('/')[3].split('-')[1]  # original output = "uni/tn-uhbny/ap-rhoAppProfile/epg-159_140_33_128/cep-02:50:56:87:46:FB"
                 print(f'EPG: {self.epg}')
                 print(f'Switch: {self.switch}')
+                interfacedetails = dcapic.searchendpointinterface(self.macaddress, self.tenant, self.epg, session_cookie)
+                self.interface = interfacedetails['imdata'][0]['fvRsCEpToPathEp']['attributes']['tDn']
+                print(f'Interface: {self.interface}')
                 break
 
 
