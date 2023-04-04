@@ -21,6 +21,7 @@ class Endpoint:
         self.epg = None
         self.switch = None
         self.interface = None
+        self.appProfile = None
 
     def getipaddress(self):
         """Method to obtain IP address to be searched from user"""
@@ -42,15 +43,18 @@ class Endpoint:
                 self.macaddress = epdetails['imdata'][0]["fvCEp"]["attributes"]["mac"]
                 self.tenant = epdetails['imdata'][0]['fvCEp']['attributes']['dn']
                 self.epg = epdetails['imdata'][0]['fvCEp']['attributes']['dn']
+                self.appProfile = epdetails['imdata'][0]['fvCEp']['attributes']['dn']
                 self.switch = epdetails['imdata'][0]['fvCEp']['children'][0]['fvIp']['children'][0]['fvReportingNode']['attributes']['id']
                 print(f'IP: {self.ipaddress}')
                 print(f'MAC: {self.macaddress}')
                 self.tenant = self.tenant.split('/')[1].split('-')[1]  # original output = "uni/tn-uhbny/ap-rhoAppProfile/epg-159_140_33_128/cep-02:50:56:87:46:FB"
                 print(f'Tenant: {self.tenant}')
+                self.appProfile = self.appProfile.split('/')[2].split('-')[1]
+                print(f'App Profile: {self.appProfile}')
                 self.epg = self.epg.split('/')[3].split('-')[1]  # original output = "uni/tn-uhbny/ap-rhoAppProfile/epg-159_140_33_128/cep-02:50:56:87:46:FB"
                 print(f'EPG: {self.epg}')
                 print(f'Switch: {self.switch}')
-                interfacedetails = dcapic.searchendpointinterface(self.macaddress, self.tenant, self.epg, session_cookie)
+                interfacedetails = dcapic.searchendpointinterface(self.macaddress, self.tenant, self.appProfile, self.epg, session_cookie)
                 self.interface = interfacedetails['imdata'][0]['fvRsCEpToPathEp']['attributes']['tDn']
                 print(f'Interface: {self.interface}')
                 break

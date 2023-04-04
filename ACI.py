@@ -61,11 +61,11 @@ class CiscoAPIC:
         except requests.exceptions.RequestException as error:
             raise SystemExit(error)
 
-    def searchendpointinterface(self, endpointmac, tenant, epg, session_cookie):
+    def searchendpointinterface(self, endpointmac, tenant, appprofile, epg, session_cookie):
         '''Method to search for endpoint interface using Endpoint MAC, Tenant and EPG in APIC
 
         Returns: [Dictionary] Learning Interface details'''
-        search_url = 'https://' + self.apic + '/api/node/mo/uni/tn-' + tenant + '/ap-rhoAppProfile/epg-' + epg + '/cep-' + endpointmac + '.json?query-target=subtree&target-subtree-class=fvCEp,fvRsCEpToPathEp,fvRsHyper,fvRsToNic,fvRsToVm'
+        search_url = 'https://' + self.apic + '/api/node/mo/uni/tn-' + tenant + '/ap-' + appprofile + '/epg-' + epg + '/cep-' + endpointmac + '.json?query-target=subtree&target-subtree-class=fvCEp,fvRsCEpToPathEp,fvRsHyper,fvRsToNic,fvRsToVm'
         try:
             resp = requests.get(url=search_url, cookies=session_cookie, verify=False)
             resp_output = resp.json()
