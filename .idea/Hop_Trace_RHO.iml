@@ -8,5 +8,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="ACI_scripting" />
     <orderEntry type="module" module-name="API_Testing" />
+    <orderEntry type="module" module-name="Test_Scripts" />
   </component>
 </module>

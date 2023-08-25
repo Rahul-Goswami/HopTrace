@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/../Network Scripting/.idea/ACI_scripting.iml" filepath="$PROJECT_DIR$/../Network Scripting/.idea/ACI_scripting.iml" />
       <module fileurl="file://$PROJECT_DIR$/../API_Testing/.idea/API_Testing.iml" filepath="$PROJECT_DIR$/../API_Testing/.idea/API_Testing.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Hop_Trace_RHO.iml" filepath="$PROJECT_DIR$/.idea/Hop_Trace_RHO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Test_Scripts/.idea/Test_Scripts.iml" filepath="$PROJECT_DIR$/../Test_Scripts/.idea/Test_Scripts.iml" />
     </modules>
   </component>
 </project>
